@@ -16,6 +16,8 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const auth_service_1 = require("./auth.service");
+const login_dto_1 = require("./dto/login.dto");
+const auth_response_dto_1 = require("./dto/auth-response.dto");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -29,6 +31,10 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('login'),
+    (0, swagger_1.ApiOperation)({ summary: "User login" }),
+    (0, swagger_1.ApiBody)({ type: login_dto_1.LoginDto }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Login successful", type: auth_response_dto_1.AuthResponseDto }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: "Invalid credentials" }),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

@@ -69,6 +69,10 @@ __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
     (0, roles_decorator_1.Roles)(user_role_enum_1.UserRole.PROPERTY_OWNER, user_role_enum_1.UserRole.AGENT, user_role_enum_1.UserRole.SUPER_ADMIN),
+    (0, swagger_1.ApiOperation)({ summary: "Create a new property listing" }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: "Property created successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 403, description: "Forbidden - insufficient permissions" }),
+    __param(0, (0, common_1.Body)()),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Function, Object]),
@@ -76,18 +80,27 @@ __decorate([
 ], PropertiesController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: "Get all properties with filters" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns filtered properties" }),
+    __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Function]),
     __metadata("design:returntype", Promise)
 ], PropertiesController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)("featured"),
+    (0, swagger_1.ApiOperation)({ summary: "Get featured properties" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns featured properties" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], PropertiesController.prototype, "getFeatured", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: "Get property by ID" }),
+    (0, swagger_1.ApiParam)({ name: "id", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns property details" }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: "Property not found" }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -97,7 +110,11 @@ __decorate([
     (0, common_1.Patch)(":id"),
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiOperation)({ summary: "Update property" }),
+    (0, swagger_1.ApiParam)({ name: "id", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Property updated successfully" }),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __param(2, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object, Object]),
@@ -107,6 +124,9 @@ __decorate([
     (0, common_1.Delete)(":id"),
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiOperation)({ summary: "Delete property" }),
+    (0, swagger_1.ApiParam)({ name: "id", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Property deleted successfully" }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
@@ -118,6 +138,9 @@ __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
     (0, roles_decorator_1.Roles)(user_role_enum_1.UserRole.SUPER_ADMIN, user_role_enum_1.UserRole.ADMIN),
+    (0, swagger_1.ApiOperation)({ summary: "Approve property (Admin only)" }),
+    (0, swagger_1.ApiParam)({ name: "id", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Property approved successfully" }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
@@ -129,6 +152,9 @@ __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
     (0, roles_decorator_1.Roles)(user_role_enum_1.UserRole.SUPER_ADMIN, user_role_enum_1.UserRole.ADMIN),
+    (0, swagger_1.ApiOperation)({ summary: "Reject property (Admin only)" }),
+    (0, swagger_1.ApiParam)({ name: "id", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Property rejected successfully" }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('reason')),
     __metadata("design:type", Function),
@@ -137,6 +163,9 @@ __decorate([
 ], PropertiesController.prototype, "rejectProperty", null);
 __decorate([
     (0, common_1.Get)('owner/:ownerId'),
+    (0, swagger_1.ApiOperation)({ summary: "Get properties by owner" }),
+    (0, swagger_1.ApiParam)({ name: "ownerId", description: "Owner ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns owner's properties" }),
     __param(0, (0, common_1.Param)('ownerId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -146,7 +175,11 @@ __decorate([
     (0, common_1.Post)(":propertyId/reviews"),
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiOperation)({ summary: "Create a property review" }),
+    (0, swagger_1.ApiParam)({ name: "propertyId", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: "Review created successfully" }),
     __param(0, (0, common_1.Param)('propertyId')),
+    __param(1, (0, common_1.Body)()),
     __param(2, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Function, Object]),
@@ -154,6 +187,9 @@ __decorate([
 ], PropertiesController.prototype, "createReview", null);
 __decorate([
     (0, common_1.Get)(':propertyId/reviews'),
+    (0, swagger_1.ApiOperation)({ summary: "Get all reviews for a property" }),
+    (0, swagger_1.ApiParam)({ name: "propertyId", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns property reviews" }),
     __param(0, (0, common_1.Param)('propertyId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -161,6 +197,9 @@ __decorate([
 ], PropertiesController.prototype, "getPropertyReviews", null);
 __decorate([
     (0, common_1.Get)(':propertyId/reviews/rating'),
+    (0, swagger_1.ApiOperation)({ summary: "Get average rating for a property" }),
+    (0, swagger_1.ApiParam)({ name: "propertyId", description: "Property ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns average rating" }),
     __param(0, (0, common_1.Param)('propertyId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

@@ -39,12 +39,18 @@ let AgentsController = class AgentsController {
 exports.AgentsController = AgentsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: "Get all agents" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns list of all agents" }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AgentsController.prototype, "getAllAgents", null);
 __decorate([
     (0, common_1.Get)(':userId'),
+    (0, swagger_1.ApiOperation)({ summary: "Get agent profile by user ID" }),
+    (0, swagger_1.ApiParam)({ name: "userId", description: "User ID" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns agent profile" }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: "Agent not found" }),
     __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -53,6 +59,10 @@ __decorate([
 __decorate([
     (0, common_1.Get)('profile/me'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, swagger_1.ApiOperation)({ summary: "Get current agent's profile" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns current agent profile" }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
     __param(0, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -61,6 +71,10 @@ __decorate([
 __decorate([
     (0, common_1.Patch)("profile/me"),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, swagger_1.ApiOperation)({ summary: "Update current agent's profile" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Profile updated successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
@@ -69,7 +83,6 @@ __decorate([
 ], AgentsController.prototype, "updateMyProfile", null);
 exports.AgentsController = AgentsController = __decorate([
     (0, swagger_1.ApiTags)("Agents"),
-    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.Controller)("agents"),
     __metadata("design:paramtypes", [agents_service_1.AgentsService])
 ], AgentsController);

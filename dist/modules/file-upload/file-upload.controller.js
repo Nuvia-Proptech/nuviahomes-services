@@ -38,6 +38,7 @@ __decorate([
     (0, common_1.Post)("single"),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("file")),
+    (0, swagger_1.ApiOperation)({ summary: "Upload a single file" }),
     (0, swagger_1.ApiConsumes)("multipart/form-data"),
     (0, swagger_1.ApiBody)({
         schema: {
@@ -54,6 +55,10 @@ __decorate([
             },
         },
     }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: "File uploaded successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
+    __param(0, (0, common_1.UploadedFile)()),
+    __param(1, (0, common_1.Body)('folder')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
@@ -62,6 +67,7 @@ __decorate([
     (0, common_1.Post)("multiple"),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.UseInterceptors)((0, platform_express_1.FilesInterceptor)("files", 10)),
+    (0, swagger_1.ApiOperation)({ summary: "Upload multiple files (max 10)" }),
     (0, swagger_1.ApiConsumes)("multipart/form-data"),
     (0, swagger_1.ApiBody)({
         schema: {
@@ -81,6 +87,10 @@ __decorate([
             },
         },
     }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: "Files uploaded successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
+    __param(0, (0, common_1.UploadedFiles)()),
+    __param(1, (0, common_1.Body)('folder')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Array, Object]),
     __metadata("design:returntype", Promise)
@@ -88,6 +98,10 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':filepath'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiOperation)({ summary: "Delete a file" }),
+    (0, swagger_1.ApiParam)({ name: "filepath", description: "File path to delete" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "File deleted successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: "File not found" }),
     __param(0, (0, common_1.Param)('filepath')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
