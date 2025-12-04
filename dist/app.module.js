@@ -21,6 +21,7 @@ const blog_module_1 = require("./modules/blog/blog.module");
 const file_upload_module_1 = require("./modules/file-upload/file-upload.module");
 const appointments_module_1 = require("./modules/appointments/appointments.module");
 const contact_module_1 = require("./modules/contact/contact.module");
+const wallet_module_1 = require("./modules/wallet/wallet.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -47,6 +48,7 @@ exports.AppModule = AppModule = __decorate([
             file_upload_module_1.FileUploadModule,
             appointments_module_1.AppointmentsModule,
             contact_module_1.ContactModule,
+            wallet_module_1.WalletModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

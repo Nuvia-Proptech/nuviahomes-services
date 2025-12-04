@@ -6,6 +6,7 @@ Real estate company services - A comprehensive NestJS API for real estate manage
 
 - 🏠 Property Management (listings, reviews, approvals)
 - 💰 Investment Projects & Portfolio Management
+- 💳 Wallet & Transaction Management
 - 📅 Appointment Scheduling
 - 👥 User & Agent Management
 - 📝 Blog & Content Management
@@ -41,12 +42,13 @@ See [SWAGGER_QUICK_START.md](./SWAGGER_QUICK_START.md) for detailed instructions
 ### Available API Tags
 
 - **Health**: Health check endpoints
-- **Auth**: Login and authentication
+- **Auth**: Login, signup, and password reset
 - **Users**: User management (Admin)
 - **Agents**: Agent profiles
 - **Properties**: Property listings and reviews
 - **Appointments**: Scheduling and management
 - **Investments**: Investment projects and tracking
+- **Wallet**: Wallet management, deposits, withdrawals, transfers, and transactions
 - **Blog**: Blog posts and comments
 - **Contact**: Contact form submissions
 - **File Upload**: File management
@@ -114,7 +116,8 @@ src/
 │   ├── file-upload/  # File management
 │   ├── investments/  # Investment projects
 │   ├── properties/   # Property listings
-│   └── users/        # User management
+│   ├── users/        # User management
+│   └── wallet/       # Wallet & transactions
 ├── app.module.ts     # Root module
 └── main.ts           # Application entry point
 ```

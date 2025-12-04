@@ -12,6 +12,7 @@ import { BlogModule } from "./modules/blog/blog.module"
 import { FileUploadModule } from "./modules/file-upload/file-upload.module"
 import { AppointmentsModule } from "./modules/appointments/appointments.module"
 import { ContactModule } from "./modules/contact/contact.module"
+import { WalletModule } from "./modules/wallet/wallet.module"
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ContactModule } from "./modules/contact/contact.module"
     FileUploadModule,
     AppointmentsModule,
     ContactModule,
+    WalletModule,
   ],
   controllers: [AppController],
   providers: [AppService],
