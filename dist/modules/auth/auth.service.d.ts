@@ -15,7 +15,7 @@ export declare class AuthService {
     login(loginDto: LoginDto): Promise<{
         access_token: string;
         user: {
-            id: unknown;
+            id: any;
             email: string;
             firstName: string;
             lastName: string;
@@ -25,7 +25,7 @@ export declare class AuthService {
     signup(signupDto: SignupDto): Promise<{
         access_token: string;
         user: {
-            id: unknown;
+            id: any;
             email: string;
             firstName: string;
             lastName: string;

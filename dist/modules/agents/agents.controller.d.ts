@@ -1,4 +1,5 @@
 import { AgentsService } from "./agents.service";
+import { AgentUpdateDto } from "./dto/agent-response.dto";
 export declare class AgentsController {
     private readonly agentsService;
     constructor(agentsService: AgentsService);
@@ -17,7 +18,7 @@ export declare class AgentsController {
     }> & {
         __v: number;
     }>;
-    updateMyProfile(updateDto: any, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/agent-profile.schema").AgentProfile, {}, {}> & import("./schemas/agent-profile.schema").AgentProfile & Required<{
+    updateMyProfile(updateDto: AgentUpdateDto, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/agent-profile.schema").AgentProfile, {}, {}> & import("./schemas/agent-profile.schema").AgentProfile & Required<{
         _id: unknown;
     }> & {
         __v: number;

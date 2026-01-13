@@ -13,6 +13,16 @@ exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const app_service_1 = require("./app.service");
+class HealthResponseDto {
+    message;
+}
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Welcome to Nuvia Homes Real Estate API! 🏠",
+        description: "Welcome message indicating API is healthy"
+    }),
+    __metadata("design:type", String)
+], HealthResponseDto.prototype, "message", void 0);
 let AppController = class AppController {
     appService;
     constructor(appService) {
@@ -25,8 +35,15 @@ let AppController = class AppController {
 exports.AppController = AppController;
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: "Health check endpoint" }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns welcome message" }),
+    (0, swagger_1.ApiOperation)({
+        summary: "Health check endpoint",
+        description: "Simple health check to verify the API is running and accessible."
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Returns welcome message indicating API is healthy",
+        type: String
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)

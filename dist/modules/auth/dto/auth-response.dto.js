@@ -11,17 +11,67 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthResponseDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const user_role_enum_1 = require("../../../common/enums/user-role.enum");
+class UserResponseDto {
+    id;
+    email;
+    firstName;
+    lastName;
+    role;
+}
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "507f1f77bcf86cd799439011",
+        description: "User's unique identifier"
+    }),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "john.doe@example.com",
+        description: "User's email address"
+    }),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "email", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "John",
+        description: "User's first name"
+    }),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "firstName", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Doe",
+        description: "User's last name"
+    }),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "lastName", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: user_role_enum_1.UserRole.USER,
+        enum: user_role_enum_1.UserRole,
+        description: "User's role in the system"
+    }),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "role", void 0);
 class AuthResponseDto {
     access_token;
     user;
 }
 exports.AuthResponseDto = AuthResponseDto;
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDdmMWY3N2JjZjg2Y2Q3OTk0MzkwMTEiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDI2NzI2MDAsImV4cCI6MTY0MjY3NjIwMH0.example_signature",
+        description: "JWT access token for authentication"
+    }),
     __metadata("design:type", String)
 ], AuthResponseDto.prototype, "access_token", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Object)
+    (0, swagger_1.ApiProperty)({
+        type: UserResponseDto,
+        description: "User information"
+    }),
+    __metadata("design:type", UserResponseDto)
 ], AuthResponseDto.prototype, "user", void 0);
 //# sourceMappingURL=auth-response.dto.js.map

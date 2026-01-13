@@ -1,7 +1,8 @@
 import { PropertiesService } from "./properties.service";
-import type { CreatePropertyDto } from "./dto/create-property.dto";
-import type { FilterPropertyDto } from "./dto/filter-property.dto";
-import type { CreateReviewDto } from "./dto/create-review.dto";
+import { CreatePropertyDto } from "./dto/create-property.dto";
+import { FilterPropertyDto } from "./dto/filter-property.dto";
+import { CreateReviewDto } from "./dto/create-review.dto";
+import { UpdatePropertyDto } from "./dto/property-response.dto";
 export declare class PropertiesController {
     private readonly propertiesService;
     constructor(propertiesService: PropertiesService);
@@ -33,7 +34,7 @@ export declare class PropertiesController {
     }> & {
         __v: number;
     }>;
-    update(id: string, updatePropertyDto: any, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/property.schema").Property, {}, {}> & import("./schemas/property.schema").Property & Required<{
+    update(id: string, updatePropertyDto: UpdatePropertyDto, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/property.schema").Property, {}, {}> & import("./schemas/property.schema").Property & Required<{
         _id: unknown;
     }> & {
         __v: number;

@@ -33,88 +33,148 @@ class FilterPropertyDto {
 }
 exports.FilterPropertyDto = FilterPropertyDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "downtown family home",
+        description: "Search term for title, description, or address",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "search", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: property_type_enum_1.PropertyType.RESIDENTIAL,
+        enum: property_type_enum_1.PropertyType,
+        description: "Filter by property type",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(property_type_enum_1.PropertyType),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "propertyType", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: listing_type_enum_1.ListingType.SALE,
+        enum: listing_type_enum_1.ListingType,
+        description: "Filter by listing type (sale or rent)",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(listing_type_enum_1.ListingType),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "listingType", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: 200000,
+        description: "Minimum price filter",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "minPrice", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: 800000,
+        description: "Maximum price filter",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "maxPrice", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "New York",
+        description: "Filter by city",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "city", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "NY",
+        description: "Filter by state",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "state", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: 2,
+        description: "Minimum number of bedrooms",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "minBedrooms", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: 5,
+        description: "Maximum number of bedrooms",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "maxBedrooms", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Minimum number of bathrooms",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "minBathrooms", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: property_status_enum_1.PropertyStatus.APPROVED,
+        enum: property_status_enum_1.PropertyStatus,
+        description: "Filter by property status",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(property_status_enum_1.PropertyStatus),
     __metadata("design:type", String)
 ], FilterPropertyDto.prototype, "status", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: true,
+        description: "Filter for featured properties only",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Boolean)
 ], FilterPropertyDto.prototype, "isFeatured", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false, default: 1 }),
+    (0, swagger_1.ApiProperty)({
+        example: 1,
+        description: "Page number for pagination",
+        default: 1,
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], FilterPropertyDto.prototype, "page", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false, default: 10 }),
+    (0, swagger_1.ApiProperty)({
+        example: 10,
+        description: "Number of items per page",
+        default: 10,
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)

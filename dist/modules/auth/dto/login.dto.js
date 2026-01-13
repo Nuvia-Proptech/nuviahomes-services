@@ -18,12 +18,19 @@ class LoginDto {
 }
 exports.LoginDto = LoginDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "john@example.com" }),
+    (0, swagger_1.ApiProperty)({
+        example: "john.doe@example.com",
+        description: "User's email address"
+    }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], LoginDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "password123" }),
+    (0, swagger_1.ApiProperty)({
+        example: "Password123!",
+        description: "User's password (minimum 6 characters)",
+        minLength: 6
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(6),
     __metadata("design:type", String)

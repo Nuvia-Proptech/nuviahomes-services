@@ -18,6 +18,8 @@ const swagger_1 = require("@nestjs/swagger");
 const agents_service_1 = require("./agents.service");
 const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const current_user_decorator_1 = require("../auth/decorators/current-user.decorator");
+const agent_response_dto_1 = require("./dto/agent-response.dto");
+const error_response_dto_1 = require("../../common/dto/error-response.dto");
 let AgentsController = class AgentsController {
     agentsService;
     constructor(agentsService) {
@@ -39,18 +41,40 @@ let AgentsController = class AgentsController {
 exports.AgentsController = AgentsController;
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: "Get all agents" }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns list of all agents" }),
+    (0, swagger_1.ApiOperation)({
+        summary: "Get all agents",
+        description: "Retrieve a list of all registered real estate agents in the system."
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Returns list of all agents",
+        type: [agent_response_dto_1.AgentResponseDto]
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AgentsController.prototype, "getAllAgents", null);
 __decorate([
     (0, common_1.Get)(':userId'),
-    (0, swagger_1.ApiOperation)({ summary: "Get agent profile by user ID" }),
-    (0, swagger_1.ApiParam)({ name: "userId", description: "User ID" }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns agent profile" }),
-    (0, swagger_1.ApiResponse)({ status: 404, description: "Agent not found" }),
+    (0, swagger_1.ApiOperation)({
+        summary: "Get agent profile by user ID",
+        description: "Retrieve detailed profile information for a specific agent by their user ID."
+    }),
+    (0, swagger_1.ApiParam)({
+        name: "userId",
+        description: "User ID of the agent",
+        example: "507f1f77bcf86cd799439013"
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Returns agent profile",
+        type: agent_response_dto_1.AgentResponseDto
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 404,
+        description: "Agent not found",
+        type: error_response_dto_1.NotFoundResponseDto
+    }),
     __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -59,10 +83,21 @@ __decorate([
 __decorate([
     (0, common_1.Get)('profile/me'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiOperation)({ summary: "Get current agent's profile" }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: "Returns current agent profile" }),
-    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: "Get current agent's profile",
+        description: "Retrieve the profile information for the currently authenticated agent."
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Returns current agent profile",
+        type: agent_response_dto_1.AgentResponseDto
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 401,
+        description: "Unauthorized - Invalid or missing JWT token",
+        type: error_response_dto_1.UnauthorizedResponseDto
+    }),
     __param(0, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -71,14 +106,29 @@ __decorate([
 __decorate([
     (0, common_1.Patch)("profile/me"),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiOperation)({ summary: "Update current agent's profile" }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: "Profile updated successfully" }),
-    (0, swagger_1.ApiResponse)({ status: 401, description: "Unauthorized" }),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: "Update current agent's profile",
+        description: "Update profile information for the currently authenticated agent."
+    }),
+    (0, swagger_1.ApiBody)({
+        type: agent_response_dto_1.AgentUpdateDto,
+        description: "Agent profile update data"
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: "Profile updated successfully",
+        type: agent_response_dto_1.AgentResponseDto
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 401,
+        description: "Unauthorized - Invalid or missing JWT token",
+        type: error_response_dto_1.UnauthorizedResponseDto
+    }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [agent_response_dto_1.AgentUpdateDto, Object]),
     __metadata("design:returntype", Promise)
 ], AgentsController.prototype, "updateMyProfile", null);
 exports.AgentsController = AgentsController = __decorate([

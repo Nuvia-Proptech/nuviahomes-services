@@ -43,7 +43,7 @@ export class AuthService {
     return {
       access_token,
       user: {
-        id: user._id,
+        id: (user._id as any).toString(),
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -80,7 +80,7 @@ export class AuthService {
     return {
       access_token,
       user: {
-        id: user._id,
+        id: (user._id as any).toString(),
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,

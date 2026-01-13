@@ -19,19 +19,34 @@ class CreateReviewDto {
 }
 exports.CreateReviewDto = CreateReviewDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ minimum: 1, maximum: 5 }),
+    (0, swagger_1.ApiProperty)({
+        example: 5,
+        description: "Rating from 1 to 5 stars",
+        minimum: 1,
+        maximum: 5
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(1),
     (0, class_validator_1.Max)(5),
     __metadata("design:type", Number)
 ], CreateReviewDto.prototype, "rating", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "Absolutely loved this property! The location is perfect and the amenities are top-notch. The agent was very helpful throughout the process. Highly recommend!",
+        description: "Review comment"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateReviewDto.prototype, "comment", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: [
+            "https://example.com/review1-photo1.jpg",
+            "https://example.com/review1-photo2.jpg"
+        ],
+        description: "Array of review image URLs",
+        required: false
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)

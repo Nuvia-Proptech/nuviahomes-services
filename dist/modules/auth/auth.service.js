@@ -80,7 +80,7 @@ let AuthService = class AuthService {
         return {
             access_token,
             user: {
-                id: user._id,
+                id: user._id.toString(),
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -110,7 +110,7 @@ let AuthService = class AuthService {
         return {
             access_token,
             user: {
-                id: user._id,
+                id: user._id.toString(),
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,

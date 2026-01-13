@@ -5,75 +5,135 @@ import { ListingType } from "@/common/enums/listing-type.enum"
 import { PropertyStatus } from "@/common/enums/property-status.enum"
 
 export class FilterPropertyDto {
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: "downtown family home",
+    description: "Search term for title, description, or address",
+    required: false
+  })
   @IsOptional()
   @IsString()
   search?: string
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: PropertyType.RESIDENTIAL,
+    enum: PropertyType,
+    description: "Filter by property type",
+    required: false
+  })
   @IsOptional()
   @IsEnum(PropertyType)
   propertyType?: PropertyType
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: ListingType.SALE,
+    enum: ListingType,
+    description: "Filter by listing type (sale or rent)",
+    required: false
+  })
   @IsOptional()
   @IsEnum(ListingType)
   listingType?: ListingType
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: 200000,
+    description: "Minimum price filter",
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   @Min(0)
   minPrice?: number
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: 800000,
+    description: "Maximum price filter",
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   maxPrice?: number
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: "New York",
+    description: "Filter by city",
+    required: false
+  })
   @IsOptional()
   @IsString()
   city?: string
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: "NY",
+    description: "Filter by state",
+    required: false
+  })
   @IsOptional()
   @IsString()
   state?: string
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: 2,
+    description: "Minimum number of bedrooms",
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   @Min(0)
   minBedrooms?: number
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: 5,
+    description: "Maximum number of bedrooms",
+    required: false
+  })
   @IsOptional()
   @IsNumber()
-  @Min(0)
   maxBedrooms?: number
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: 1,
+    description: "Minimum number of bathrooms",
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   @Min(0)
   minBathrooms?: number
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: PropertyStatus.APPROVED,
+    enum: PropertyStatus,
+    description: "Filter by property status",
+    required: false
+  })
   @IsOptional()
   @IsEnum(PropertyStatus)
   status?: PropertyStatus
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ 
+    example: true,
+    description: "Filter for featured properties only",
+    required: false
+  })
   @IsOptional()
   isFeatured?: boolean
 
-  @ApiProperty({ required: false, default: 1 })
+  @ApiProperty({ 
+    example: 1,
+    description: "Page number for pagination",
+    default: 1,
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   page?: number
 
-  @ApiProperty({ required: false, default: 10 })
+  @ApiProperty({ 
+    example: 10,
+    description: "Number of items per page",
+    default: 10,
+    required: false
+  })
   @IsOptional()
   @IsNumber()
   limit?: number
