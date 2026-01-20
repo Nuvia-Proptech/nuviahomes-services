@@ -16,6 +16,7 @@ export declare class WalletController {
     }> & {
         __v: number;
     }>;
+    getWalletStats(req: any): Promise<void>;
     deposit(req: any, depositDto: DepositDto): Promise<{
         wallet: import("mongoose").Document<unknown, {}, import("./schemas/wallet.schema").Wallet, {}, {}> & import("./schemas/wallet.schema").Wallet & Required<{
             _id: unknown;
@@ -57,7 +58,7 @@ export declare class WalletController {
             __v: number;
         };
     }>;
-    getTransactions(req: any, limit?: number, skip?: number): Promise<{
+    getTransactions(req: any, limit?: number, skip?: number, type?: string, status?: string): Promise<{
         transactions: (import("mongoose").Document<unknown, {}, import("./schemas/transaction.schema").Transaction, {}, {}> & import("./schemas/transaction.schema").Transaction & Required<{
             _id: unknown;
         }> & {

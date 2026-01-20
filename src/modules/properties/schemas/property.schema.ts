@@ -33,14 +33,14 @@ export class Property extends Document {
   @Prop({ required: true })
   state: string
 
-  @Prop({ required: true })
-  zipCode: string
+  // @Prop({ required: true })
+  // zipCode: string
 
-  @Prop({ type: Object })
-  location?: {
-    latitude: number
-    longitude: number
-  }
+  // @Prop({ type: Object })
+  // location?: {
+  //   latitude: number
+  //   longitude: number
+  // }
 
   @Prop()
   bedrooms?: number
@@ -60,8 +60,8 @@ export class Property extends Document {
   @Prop()
   videoUrl?: string
 
-  @Prop({ type: [String] })
-  floorPlanImages?: string[]
+  // @Prop({ type: [String] })
+  // floorPlanImages?: string[]
 
   @Prop({ type: Types.ObjectId, ref: "User" })
   ownerId: Types.ObjectId

@@ -1,5 +1,6 @@
 import { ContactService } from "./contact.service";
-import type { SubmitContactDto } from "./dto/submit-contact.dto";
+import { SubmitContactDto } from "./dto/submit-contact.dto";
+import { RespondToContactDto } from "./dto/contact-response.dto";
 export declare class ContactController {
     private readonly contactService;
     constructor(contactService: ContactService);
@@ -23,9 +24,7 @@ export declare class ContactController {
     }> & {
         __v: number;
     }>;
-    respondToContact(id: string, body: {
-        response: string;
-    }): Promise<import("mongoose").Document<unknown, {}, import("./schemas/contact-submission.schema").ContactSubmission, {}, {}> & import("./schemas/contact-submission.schema").ContactSubmission & Required<{
+    respondToContact(id: string, body: RespondToContactDto): Promise<import("mongoose").Document<unknown, {}, import("./schemas/contact-submission.schema").ContactSubmission, {}, {}> & import("./schemas/contact-submission.schema").ContactSubmission & Required<{
         _id: unknown;
     }> & {
         __v: number;

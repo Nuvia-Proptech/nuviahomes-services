@@ -19,19 +19,30 @@ class DepositDto {
 }
 exports.DepositDto = DepositDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 1000, description: "Amount to deposit" }),
+    (0, swagger_1.ApiProperty)({
+        example: 1000,
+        description: "Amount to deposit (minimum: $1)"
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(1),
     __metadata("design:type", Number)
 ], DepositDto.prototype, "amount", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "Bank transfer", description: "Deposit description", required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "Bank transfer deposit",
+        description: "Description of the deposit",
+        required: false
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], DepositDto.prototype, "description", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "REF123456", description: "Payment reference", required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "REF123456789",
+        description: "Payment reference number",
+        required: false
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)

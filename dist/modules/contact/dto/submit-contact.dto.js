@@ -21,27 +21,42 @@ class SubmitContactDto {
 }
 exports.SubmitContactDto = SubmitContactDto;
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "John Doe",
+        description: "Contact person's full name"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], SubmitContactDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "john.doe@example.com",
+        description: "Contact person's email address"
+    }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], SubmitContactDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "+1234567890",
+        description: "Contact person's phone number"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], SubmitContactDto.prototype, "phone", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "Inquiry about Property Investment",
+        description: "Subject of the contact message"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], SubmitContactDto.prototype, "subject", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        example: "Hello, I am interested in learning more about your investment opportunities. Could you please provide more information about the downtown apartment complex project? I would also like to know about the minimum investment requirements and expected returns.",
+        description: "Detailed contact message"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], SubmitContactDto.prototype, "message", void 0);

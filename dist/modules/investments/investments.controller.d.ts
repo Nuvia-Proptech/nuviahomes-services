@@ -1,6 +1,7 @@
 import { InvestmentsService } from "./investments.service";
-import type { CreateInvestmentProjectDto } from "./dto/create-investment-project.dto";
-import type { CreateInvestmentDto } from "./dto/create-investment.dto";
+import { CreateInvestmentProjectDto } from "./dto/create-investment-project.dto";
+import { CreateInvestmentDto } from "./dto/create-investment.dto";
+import { UpdateInvestmentProjectDto } from "./dto/investment-response.dto";
 export declare class InvestmentsController {
     private readonly investmentsService;
     constructor(investmentsService: InvestmentsService);
@@ -35,7 +36,7 @@ export declare class InvestmentsController {
         investorCount: number;
         remainingAmount: number;
     }>;
-    updateProject(id: string, updateDto: any, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/investment-project.schema").InvestmentProject, {}, {}> & import("./schemas/investment-project.schema").InvestmentProject & Required<{
+    updateProject(id: string, updateDto: UpdateInvestmentProjectDto, user: any): Promise<import("mongoose").Document<unknown, {}, import("./schemas/investment-project.schema").InvestmentProject, {}, {}> & import("./schemas/investment-project.schema").InvestmentProject & Required<{
         _id: unknown;
     }> & {
         __v: number;

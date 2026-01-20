@@ -18,13 +18,20 @@ class WithdrawDto {
 }
 exports.WithdrawDto = WithdrawDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 500, description: "Amount to withdraw" }),
+    (0, swagger_1.ApiProperty)({
+        example: 500,
+        description: "Amount to withdraw (minimum: $1)"
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(1),
     __metadata("design:type", Number)
 ], WithdrawDto.prototype, "amount", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "Bank withdrawal", description: "Withdrawal description", required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "Bank withdrawal to checking account",
+        description: "Description of the withdrawal",
+        required: false
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)

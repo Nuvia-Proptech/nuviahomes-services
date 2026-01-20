@@ -19,18 +19,28 @@ class TransferDto {
 }
 exports.TransferDto = TransferDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "507f1f77bcf86cd799439011", description: "Recipient user ID" }),
+    (0, swagger_1.ApiProperty)({
+        example: "507f1f77bcf86cd799439012",
+        description: "Recipient's user ID"
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], TransferDto.prototype, "recipientUserId", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 250, description: "Amount to transfer" }),
+    (0, swagger_1.ApiProperty)({
+        example: 250,
+        description: "Amount to transfer (minimum: $1)"
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.Min)(1),
     __metadata("design:type", Number)
 ], TransferDto.prototype, "amount", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: "Payment for services", description: "Transfer description", required: false }),
+    (0, swagger_1.ApiProperty)({
+        example: "Payment for consulting services",
+        description: "Description of the transfer",
+        required: false
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
