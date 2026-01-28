@@ -12,18 +12,12 @@ export declare class Property extends Document {
     address: string;
     city: string;
     state: string;
-    zipCode: string;
-    location?: {
-        latitude: number;
-        longitude: number;
-    };
     bedrooms?: number;
     bathrooms?: number;
     squareFeet?: number;
     amenities?: string[];
     images?: string[];
     videoUrl?: string;
-    floorPlanImages?: string[];
     ownerId: Types.ObjectId;
     agentId?: Types.ObjectId;
     status: PropertyStatus;

@@ -1,11 +1,12 @@
-import { Injectable, ConflictException, NotFoundException } from "@nestjs/common"
+import { Injectable, ConflictException, NotFoundException, BadRequestException } from "@nestjs/common"
 import { InjectModel } from "@nestjs/mongoose"
 import type { Model } from "mongoose"
 import * as bcrypt from "bcryptjs"
 import { User } from "./schemas/user.schema"
 import type { CreateUserDto } from "./dto/create-user.dto"
 import type { UpdateUserDto } from "./dto/update-user.dto"
-import type { UserRole } from "@/common/enums/user-role.enum"
+import { ChangeRoleDto } from "./dto/change-role.dto"
+import { UserRole } from "@/common/enums/user-role.enum"
 
 @Injectable()
 export class UsersService {
@@ -107,5 +108,65 @@ export class UsersService {
     }
 
     return user
+  }
+
+  async requestRoleChange(userId: string, changeRoleDto: ChangeRoleDto) {
+    const user = await this.userModel.findById(userId)
+    if (!user) {
+      throw new NotFoundException("User not found")
+    }
+
+    // Check if user is currently a regular user
+    if (user.role !== UserRole.USER) {
+      throw new BadRequestException("Only regular users can request role changes")
+    }
+
+    // For now, we'll directly change the role. In a real application, 
+    // you might want to create a role change request system with approval workflow
+    const updatedUser = await this.userModel
+      .findByIdAndUpdate(
+        userId,
+        { 
+          role: changeRoleDto.newRole,
+          // Reset verification status for role changes if needed
+          // isVerified: false 
+        },
+        { new: true }
+      )
+      .select("-password")
+
+    return {
+      message: `Role successfully changed to ${changeRoleDto.newRole}`,
+      user: updatedUser
+    }
+  }
+
+  async changeUserRole(userId: string, newRole: UserRole, adminId: string) {
+    const user = await this.userModel.findById(userId)
+    if (!user) {
+      throw new NotFoundException("User not found")
+    }
+
+    // Prevent changing super admin role
+    if (user.role === UserRole.SUPER_ADMIN) {
+      throw new BadRequestException("Cannot change super admin role")
+    }
+
+    const updatedUser = await this.userModel
+      .findByIdAndUpdate(
+        userId,
+        { 
+          role: newRole,
+          approvedBy: adminId,
+          approvalDate: new Date()
+        },
+        { new: true }
+      )
+      .select("-password")
+
+    return {
+      message: `User role successfully changed to ${newRole}`,
+      user: updatedUser
+    }
   }
 }

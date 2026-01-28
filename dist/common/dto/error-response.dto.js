@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UnauthorizedResponseDto = exports.NotFoundResponseDto = exports.ErrorResponseDto = void 0;
+exports.BadRequestResponseDto = exports.UnauthorizedResponseDto = exports.NotFoundResponseDto = exports.ErrorResponseDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 class ErrorResponseDto {
     statusCode;
@@ -92,4 +92,31 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UnauthorizedResponseDto.prototype, "error", void 0);
+class BadRequestResponseDto {
+    statusCode;
+    message;
+    error;
+}
+exports.BadRequestResponseDto = BadRequestResponseDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 400,
+        description: "HTTP status code"
+    }),
+    __metadata("design:type", Number)
+], BadRequestResponseDto.prototype, "statusCode", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Bad Request",
+        description: "Error message"
+    }),
+    __metadata("design:type", String)
+], BadRequestResponseDto.prototype, "message", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "Bad Request",
+        description: "Error type"
+    }),
+    __metadata("design:type", String)
+], BadRequestResponseDto.prototype, "error", void 0);
 //# sourceMappingURL=error-response.dto.js.map

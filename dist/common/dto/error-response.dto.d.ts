@@ -13,3 +13,8 @@ export declare class UnauthorizedResponseDto {
     message: string;
     error: string;
 }
+export declare class BadRequestResponseDto {
+    statusCode: number;
+    message: string;
+    error: string;
+}

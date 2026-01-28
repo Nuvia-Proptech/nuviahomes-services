@@ -25,15 +25,12 @@ let Property = class Property extends mongoose_2.Document {
     address;
     city;
     state;
-    zipCode;
-    location;
     bedrooms;
     bathrooms;
     squareFeet;
     amenities;
     images;
     videoUrl;
-    floorPlanImages;
     ownerId;
     agentId;
     status;
@@ -82,14 +79,6 @@ __decorate([
     __metadata("design:type", String)
 ], Property.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Property.prototype, "zipCode", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: Object }),
-    __metadata("design:type", Object)
-], Property.prototype, "location", void 0);
-__decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], Property.prototype, "bedrooms", void 0);
@@ -113,10 +102,6 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Property.prototype, "videoUrl", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: [String] }),
-    __metadata("design:type", Array)
-], Property.prototype, "floorPlanImages", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: mongoose_2.Types.ObjectId, ref: "User" }),
     __metadata("design:type", mongoose_2.Types.ObjectId)

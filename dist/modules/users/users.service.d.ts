@@ -2,7 +2,8 @@ import type { Model } from "mongoose";
 import { User } from "./schemas/user.schema";
 import type { CreateUserDto } from "./dto/create-user.dto";
 import type { UpdateUserDto } from "./dto/update-user.dto";
-import type { UserRole } from "@/common/enums/user-role.enum";
+import { ChangeRoleDto } from "./dto/change-role.dto";
+import { UserRole } from "@/common/enums/user-role.enum";
 export declare class UsersService {
     private readonly userModel;
     constructor(userModel: Model<User>);
@@ -48,5 +49,21 @@ export declare class UsersService {
         _id: unknown;
     }> & {
         __v: number;
+    }>;
+    requestRoleChange(userId: string, changeRoleDto: ChangeRoleDto): Promise<{
+        message: string;
+        user: (import("mongoose").Document<unknown, {}, User, {}, {}> & User & Required<{
+            _id: unknown;
+        }> & {
+            __v: number;
+        }) | null;
+    }>;
+    changeUserRole(userId: string, newRole: UserRole, adminId: string): Promise<{
+        message: string;
+        user: (import("mongoose").Document<unknown, {}, User, {}, {}> & User & Required<{
+            _id: unknown;
+        }> & {
+            __v: number;
+        }) | null;
     }>;
 }

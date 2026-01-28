@@ -50,6 +50,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const bcrypt = __importStar(require("bcryptjs"));
 const user_schema_1 = require("./schemas/user.schema");
+const user_role_enum_1 = require("../../common/enums/user-role.enum");
 let UsersService = class UsersService {
     userModel;
     constructor(userModel) {
@@ -131,6 +132,44 @@ let UsersService = class UsersService {
             throw new common_1.NotFoundException("User not found");
         }
         return user;
+    }
+    async requestRoleChange(userId, changeRoleDto) {
+        const user = await this.userModel.findById(userId);
+        if (!user) {
+            throw new common_1.NotFoundException("User not found");
+        }
+        if (user.role !== user_role_enum_1.UserRole.USER) {
+            throw new common_1.BadRequestException("Only regular users can request role changes");
+        }
+        const updatedUser = await this.userModel
+            .findByIdAndUpdate(userId, {
+            role: changeRoleDto.newRole,
+        }, { new: true })
+            .select("-password");
+        return {
+            message: `Role successfully changed to ${changeRoleDto.newRole}`,
+            user: updatedUser
+        };
+    }
+    async changeUserRole(userId, newRole, adminId) {
+        const user = await this.userModel.findById(userId);
+        if (!user) {
+            throw new common_1.NotFoundException("User not found");
+        }
+        if (user.role === user_role_enum_1.UserRole.SUPER_ADMIN) {
+            throw new common_1.BadRequestException("Cannot change super admin role");
+        }
+        const updatedUser = await this.userModel
+            .findByIdAndUpdate(userId, {
+            role: newRole,
+            approvedBy: adminId,
+            approvalDate: new Date()
+        }, { new: true })
+            .select("-password");
+        return {
+            message: `User role successfully changed to ${newRole}`,
+            user: updatedUser
+        };
     }
 };
 exports.UsersService = UsersService;
